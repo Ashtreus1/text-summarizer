@@ -10,7 +10,7 @@ class SummarizerController extends Controller
     {
         return view('summarizer');
     }
-
+    // Bug: Page was asking for data re-submission 
     public function summarize(Request $request)
     {
         if ($request->isMethod('post')) {

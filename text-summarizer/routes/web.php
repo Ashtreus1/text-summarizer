@@ -10,4 +10,3 @@ Route::get('/', function () {
 
 Route::get('/summarizer', [SummarizerController::class, 'index']);
 Route::post('/summarizer', [SummarizerController::class, 'summarize']);
-

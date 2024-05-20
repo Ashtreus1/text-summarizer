@@ -13,16 +13,22 @@ class SummarizerController extends Controller
 
     public function summarize(Request $request)
     {
-        $request->validate([
-            'paragraph' => 'required|string',
-        ]);
+        if ($request->isMethod('post')) {
+            $request->validate([
+                'paragraph' => 'required|string',
+            ]);
 
-        $paragraph = $request->input('paragraph');
+            $paragraph = $request->input('paragraph');
 
-        $summary = $this->summarizer($paragraph);
+            $summary = $this->summarizer($paragraph);
 
-        return view('summarizer', ['summary' => $summary, 'paragraph' => $paragraph]);
+            return view('summarizer', ['summary' => $summary, 'paragraph' => $paragraph]);
+        }
+
+        return redirect()->route('summarizer');
     }
+
+
 
     private function summarizer($paragraph)
     {
